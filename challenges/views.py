@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import Http404, HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
+from django.http import Http404
+
 
 
 # We can also create a dictionary instead of doing if statement for each month
@@ -22,10 +25,6 @@ monthly_challenges = {
 
 def index(request):
     months = list(monthly_challenges.keys())
-    for month in months:
-        capitalized_month = month.capitalize()
-        month_path = reverse("month-challenge", args=[month])
-
     return render(request, "challenges/index.html", {
         "months": months
     })
@@ -53,5 +52,13 @@ def monthly_challenge(request, month):
             "text": challenge_text,
             "month": month
         })
-    except:
-        return HttpResponseNotFound("<h1>Month not found</h1>")
+    except: 
+        # We don't need to specify nothing in this directory because is in root folder
+        # We cannot use here a render shortcut because render() always return success
+        # response. And we need to provide an 404 Error
+        # response_data = render_to_string("404.html")
+        # return HttpResponseNotFound(response_data)
+        # We can do it this way, but as it's used so much, django has special shorcut 
+        # for it. This will look automaticly into a root templates folder and 
+        # look for 404 html file
+        raise Http404() 

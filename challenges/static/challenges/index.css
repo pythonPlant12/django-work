@@ -1,0 +1,44 @@
+ul {
+    list-style: none;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 30rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 25.5rem;
+    background-color: rgba(98, 89, 89, 0.933);
+
+}
+
+li {
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 253, 253, 0.296);
+    padding-bottom: 1rem;
+}
+
+
+li:last-of-type,
+li:nth-of-type(6) {
+    border-bottom: none;
+}
+
+li a{
+    text-decoration: none;
+    color: rgb(210, 209, 209);
+}
+
+li a:hover,
+li a:active {
+    color:rgb(255, 255, 255)
+}
+
+body {
+    margin: 0;
+    background-color: rgb(143, 121, 121);
+}

@@ -6,7 +6,7 @@ urlpatterns = [
     # in <month> we can put another name, <> means that it can be whatever)
     # This name should go as a parameter in views.py function 
     # We can also sort path by its type like int or str
-    path("", views.index),
+    path("", views.index, name="index"),
     path("<int:month>", views.monthly_challenge_by_number),
     path("<str:month>", views.monthly_challenge, name="month-challenge")
 
